@@ -212,7 +212,7 @@ function update_huffman_compression(percentage){
 	$("#huffman_compression_bar_2").css("width", Math.abs(percentage)+"%");
 	
 	if(percentage < 0){
-		$("#huffman_compression_bar").removeClass("progress-bar-danger");
+		$("#huffman_compression_bar").addClass("progress-bar-danger");
 		$("#huffman_compression_bar_2").addClass("progress-bar-danger");
     
     $("#huffman_compression_bar").css("width", Math.abs(percentage)+"%");
