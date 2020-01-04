@@ -200,20 +200,30 @@ function update_huffman_compression(percentage){
 	if(percentage === undefined){
 		$("#huffman_compression_bar").css("width", "0%");
 		$("#huffman_compression").attr("data-original-title", "0%");
+
+    $("#huffman_compression_bar_2").css("width", "0%");
+		$("#huffman_compression_2").attr("data-original-title", "0%");
 		return;
 	}
 	
 	
 	// Format bar
 	$("#huffman_compression_bar").css("width", Math.abs(percentage)+"%");
+	$("#huffman_compression_bar_2").css("width", Math.abs(percentage)+"%");
 	
 	if(percentage < 0){
 		$("#huffman_compression_bar").removeClass("progress-bar-danger");
-		$("#huffman_compression_bar").addClass("progress-bar-danger");
+		$("#huffman_compression_bar_2").addClass("progress-bar-danger");
+    
+    $("#huffman_compression_bar").css("width", Math.abs(percentage)+"%");
+	  $("#huffman_compression_bar_2").css("width", Math.abs(percentage)+"%");
 	}
 	else{
 		$("#huffman_compression_bar").removeClass("progress-bar-danger");
+    $("#huffman_compression_bar_2").removeClass("progress-bar-danger");
+
 	}
 	
 	$("#huffman_compression").attr("data-original-title", Math.round(percentage, 1)+"%");
+	$("#huffman_compression_2").attr("data-original-title", Math.round(percentage, 1)+"%");
 }
