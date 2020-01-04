@@ -32,8 +32,8 @@
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="index.html">Home</a></li>
 					<li><a href="about.html">About</a></li>
-          <li><a href="https://github.com/kgashok/huffman-encoding-visualizer/issues/new">Issue?</a></li>
-          <li><a href="https://github.com/kgashok/huffman-encoding-visualizer/commits/master">Commits</a></li>
+          <li><a href="https://github.com/kgashok/huffman-encoding-visualizer/issues/new" target="_">Issue?</a></li>
+          <li><a href="https://github.com/kgashok/huffman-encoding-visualizer/commits/glitch" target="_">Commits</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
@@ -50,7 +50,12 @@
 						<span class="btn btn-success fileinput-button" id="huffman_upload"><i class="fa fa-arrow-up"></i>&nbsp; Upload <input type="file" id="huffman_upload_input"></span>
 					</div>
 				</div>
-				
+  
+        <!-- show compression bar on top as well -->
+        <div class="progress" id="huffman_compression" data-toggle="tooltip" data-placement="right" title="" data-original-title="22%">
+							<div class="progress-bar progress-bar-success" style="width: 21.875%;" id="huffman_compression_bar"></div>
+						</div>
+      
 				<div class="row">
 					<div class="col-xs-12 show_error"></div>
 				</div>
