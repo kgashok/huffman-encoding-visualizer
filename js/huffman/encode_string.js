@@ -11,8 +11,8 @@ function encode_string(input, paths, pad){
 
 	
 	// Create the empty byte array
-	var byte_array = new Uint8Array((full_byte_string.length / 8) + ((full_byte_string.length % 8 != 0) ? 1 : 0));
-	
+	var byte_array = new Uint8Array(Math.ceil(full_byte_string.length / 8));
+  
 	// Populate byte array one byte at a time by using each character as a bit
 	for(i = 0; i < full_byte_string.length; i += 8){
 		var one_byte_string = full_byte_string.substring(i, i+8);
