@@ -1,131 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<meta charset="utf-8">
-	<title>Huffman Encoding Visualizer</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	
-	<!-- stylesheets -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/styles.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	
-	<!-- favicon -->
-	<link rel="icon" type="image/png" href="img/favicon.png">
-</head>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <title>Huffman Encoding Visualizer</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
 
-<body>
-	<div class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				
-				<a class="navbar-brand" href="index.html">Huffman Encoding Visualizer</a>
-			</div>
-				
-			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="index.html">Home</a></li>
-					<li><a href="about.html">About</a></li>
-          <li><a href="https://github.com/kgashok/huffman-encoding-visualizer/issues/new" target="_">Issue?</a></li>
-          <li><a href="https://github.com/kgashok/huffman-encoding-visualizer/commits/glitch" target="_">Commits</a></li>
-				</ul>
-			</div><!--/.nav-collapse -->
-		</div>
-	</div>
+    <!-- stylesheets -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
 
-	<div class="container">
-		<div class="text-center">
-			<h1 style="padding-top:20px;">Huffman Encoding Visualizer</h1>
-			
-			<p class="lead">
-				<div class="row">
-					<div class="col-xs-12" style="padding:0 0 20px 0;">
-						<a class="btn btn-success" id="huffman_download"><i class="fa fa-arrow-down"></i>&nbsp; Download</a> &nbsp;
-						<span class="btn btn-success fileinput-button" id="huffman_upload"><i class="fa fa-arrow-up"></i>&nbsp; Upload <input type="file" id="huffman_upload_input"></span>
-					</div>
-				</div>
-  
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+  </head>
+
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target=".navbar-collapse"
+          >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <a class="navbar-brand" href="index.html"
+            >Huffman Encoding Visualizer</a
+          >
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li>
+              <a
+                href="https://github.com/kgashok/huffman-encoding-visualizer/issues/new"
+                target="_"
+                >Issue?</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://github.com/kgashok/huffman-encoding-visualizer/commits/glitch"
+                target="_"
+                >Commits</a
+              >
+            </li>
+          </ul>
+        </div>
+        <!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="text-center">
+        <h1 style="padding-top:20px;">Huffman Encoding Visualizer</h1>
+
+        <p class="lead"></p>
+        <div class="row">
+          <div class="col-xs-12" style="padding:0 0 20px 0;">
+            <a class="btn btn-success" id="huffman_download"
+              ><i class="fa fa-arrow-down"></i>&nbsp; Download</a
+            >
+            &nbsp;
+            <span class="btn btn-success fileinput-button" id="huffman_upload"
+              ><i class="fa fa-arrow-up"></i>&nbsp; Upload
+              <input type="file" id="huffman_upload_input"
+            /></span>
+          </div>
+        </div>
+
         <!-- show compression bar on top as well -->
-        <div class="progress" id="huffman_compression_2" data-toggle="tooltip" data-placement="right" title="" data-original-title="0%">
-							<div class="progress-bar progress-bar-success" style="width: 0%;" id="huffman_compression_bar_2"></div>
-						</div>
-      
-				<div class="row">
-					<div class="col-xs-12 show_error"></div>
-				</div>
-				
-				<div class="row">
-					<div class="col-xs-6">
-						<form>
-							<div class="form-group">
-								<textarea id="huffman_input" class="form-control" style="width:100%; height:500px;" placeholder="Start typing, or drop text file here..."></textarea>
-							</div>
-						</form>
-					</div>
-					
-					<div class="col-xs-6">
-						<div class="box" id="huffman_graph" style="height:500px;">
-							<i style="line-height:500px;">Type to see graph...</i>
-						</div>
-						
-						<div id="fullscreen_icon">
-							<i class="fa fa-arrows-alt"></i>
-						</div>
-						
-						<div id="hide_fullscreen_icon">
-							<i class="fa fa-times"></i>
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-xs-12">
-						<div class="box" id="huffman_bits" style="margin-top:20px; padding:20px 20px; font-family:Courier New; max-height:500px; overflow-x:hidden; overflow-y:auto;">
-							<i style="font-family:'Lato','Helvetica Neue',Helvetica,Arial,sans-serif">Type to see bits, or <span>drop encoded file here</span>...</i>
-						</div>
-					</div>
-				</div>
-				
-				<div class="row" style="padding-bottom:50px;">
-					<div class="col-xs-12">
-						<h3 style="padding:20px 0 5px 0;">Compression Percentage</h3>
-						
-						<div class="progress" id="huffman_compression" data-toggle="tooltip" data-placement="right" title="" data-original-title="0%">
-							<div class="progress-bar progress-bar-success" style="width:0%" id="huffman_compression_bar"></div>
-						</div>
-					</div>
-				</div>
-			</p>
-		</div>
-	</div><!-- /.container -->
+        <div
+          class="progress"
+          id="huffman_compression_2"
+          data-toggle="tooltip"
+          data-placement="right"
+          title=""
+          data-original-title="0%"
+        >
+          <div
+            class="progress-bar progress-bar-success"
+            style="width: 0%;"
+            id="huffman_compression_bar_2"
+          ></div>
+        </div>
 
-	<!-- libraries -->
-	<script src="js/libraries/jquery-2.1.3.min.js"></script>
-	<script src="js/libraries/bootstrap.min.js"></script>
-	<script src="js/libraries/jit.js"></script>
-	<script src="js/libraries/binary_tree_visualizer.js"></script>
-	<script src="js/libraries/priority-queue.js"></script>
-	
-	<!-- huffman scripts -->
-	<script src="js/huffman/build_character_nodes.js"></script>
-	<script src="js/huffman/build_tree.js"></script>
-	<script src="js/huffman/build_path.js"></script>
-	<script src="js/huffman/encode_string.js"></script>
-	
-	<!-- file scripts -->
-	<script src="js/file/input.js"></script>
-	<script src="js/file/output.js"></script>
-	
-	<!-- text scripts -->
-	<script src="js/text/input.js"></script>
-	
-	<!-- gui scripts -->
-	<script src="js/gui/index.js"></script>
-</body>
+        <div class="row">
+          <div class="col-xs-12 show_error"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-6">
+            <form>
+              <div class="form-group">
+                <textarea
+                  id="huffman_input"
+                  class="form-control"
+                  style="width:100%; height:500px;"
+                  placeholder="Start typing, or drop text file here..."
+                ></textarea>
+              </div>
+            </form>
+          </div>
+
+          <div class="col-xs-6">
+            <div class="box" id="huffman_graph" style="height:500px;">
+              <i style="line-height:500px;">Type to see graph...</i>
+            </div>
+
+            <div id="fullscreen_icon">
+              <i class="fa fa-arrows-alt"></i>
+            </div>
+
+            <div id="hide_fullscreen_icon">
+              <i class="fa fa-times"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div
+              class="box"
+              id="huffman_bits"
+              style="margin-top:20px; padding:20px 20px; font-family:Courier New; max-height:500px; overflow-x:hidden; overflow-y:auto;"
+            >
+              <i
+                style="font-family:'Lato','Helvetica Neue',Helvetica,Arial,sans-serif"
+                >Type to see bits, or <span>drop encoded file here</span>...</i
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="padding-bottom:50px;">
+          <div class="col-xs-12">
+            <h3 style="padding:20px 0 5px 0;">Compression Percentage</h3>
+
+            <div
+              class="progress"
+              id="huffman_compression"
+              data-toggle="tooltip"
+              data-placement="right"
+              title=""
+              data-original-title="0%"
+            >
+              <div
+                class="progress-bar progress-bar-success"
+                style="width:0%"
+                id="huffman_compression_bar"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.container -->
+
+    <!-- libraries -->
+    <script src="js/libraries/jquery-2.1.3.min.js"></script>
+    <script src="js/libraries/bootstrap.min.js"></script>
+    <script src="js/libraries/jit.js"></script>
+    <script src="js/libraries/binary_tree_visualizer.js"></script>
+    <script src="js/libraries/priority-queue.js"></script>
+
+    <!-- huffman scripts -->
+    <script src="js/huffman/build_character_nodes.js"></script>
+    <script src="js/huffman/build_tree.js"></script>
+    <script src="js/huffman/build_path.js"></script>
+    <script src="js/huffman/encode_string.js"></script>
+
+    <!-- file scripts -->
+    <script src="js/file/input.js"></script>
+    <script src="js/file/output.js"></script>
+
+    <!-- text scripts -->
+    <script src="js/text/input.js"></script>
+
+    <!-- gui scripts -->
+    <script src="js/gui/index.js"></script>
+  </body>
 </html>
