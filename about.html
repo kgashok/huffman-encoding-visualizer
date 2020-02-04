@@ -1,95 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<meta charset="utf-8">
-	<title>About - Huffman Encoding Visualizer</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	
-	<!-- stylesheets -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/styles.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	
-	<!-- favicon -->
-	<link rel="icon" type="image/png" href="img/favicon.png">
-</head>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <title>About - Huffman Encoding Visualizer</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
 
-<body>
-	<div class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				
-				<a class="navbar-brand" href="index.html">Huffman Encoding Visualizer</a>
-			</div>
-				
-			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="index.html">Home</a></li>
-					<li class="active"><a href="about.html">About</a></li>
-				</ul>
-			</div><!--/.nav-collapse -->
-		</div>
-	</div>
+    <!-- stylesheets -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
 
-	<div class="container">
-		<div class="text-center">
-			<h1 style="padding-top:20px;">About</h1>
-			
-			<p class="lead">
-				<div class="row">
-					<div class="col-xs-12" style="text-align:left;">
-						<h3>How to use</h3>
-						<p>
-							There are multiple ways to use our Huffman Encoding Visualizer. First, is to simply type your input into the text box, and watch the tree, bits, and compression percentage dynamically change with each character. Or, if you want, you can drag and drop a text file into the text box, and the Visualizer will automatically populate the text field, as well as build the tree, display the bits, and show the compression percentage for the file you dropped. After doing either of these, if you want to keep the encoding that you just created, you can click on the "Download" button, and your browser will initiate a download of the encoded file. However, your typical text editor will not be able to correctly interpret this file, because of its encoding. If you wish to see the decoded contents of your encoded file, you may drag and drop the file into the bits display box, or use the "Upload" button, and like magic, everything will be populated!
-						</p>
-						
-						<h3>How it works</h3>
-						<p>
-							Using the input from the user, we build a Huffman Tree. This is a binary tree where each leaf represents a unique character from the input. For more information on constructing a Huffman Tree, <a href="huffman_tutorial.html" target="_blank">read this article</a>. Once this is done, we use the structure of the tree to map each unique character to a specific encoding. These encodings are then used in conjunction with the user input to create the series of bits that represents the input. Metadata is constructed using the character mappings, and then added to an array in preparation for writing to a file. The series of bits is divided into one byte chunks, and appended to the array, completing the download file. When an encoded file is uploaded, the process is essentially reversed. The mapping metadata is used to reconstruct the user input from the bit series, and then that input is used once again to reconstruct the tree. The compression percentage is calculated by subtracting the size of the encoded file divided by what would have been the size of the plain text file from one, and displayed in a nifty bar below the output.
-						</p>
-						
-						<h3>About this project</h3>
-						<p>
-							Originally assigned as a group project for the Baylor University undergraduate algorithms course, we decided to take it one step further. We wanted to create something that not only met the project requirements, but also exceeded expectations, resulting in a project that is open source, useful, and innovative, plus looks mighty fine. Created using only JavaScript, HTML, and CSS, the project can be run locally with the source code, or on any web server, because it has no server-side dependencies.
-						</p>
-            
-            <h3>
-              Also see
-            </h3>
-            <div>
-              <p>
-                Read the <a href="https://www.huffmancoding.com/my-uncle/scientific-american"  target="_">Scientific American article</a> by his nephew David Huffman.
-              </p>
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+  </head>
+
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target=".navbar-collapse"
+          >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <a class="navbar-brand" href="index.html"
+            >Huffman Encoding Visualizer</a
+          >
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">Home</a></li>
+            <li class="active"><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="text-center">
+        <h1 style="padding-top:20px;">About</h1>
+
+        <p class="lead"></p>
+        <div class="row">
+          <div class="col-xs-12" style="text-align:left;">
+            <h3>How to use</h3>
+            <p>
+              There are multiple ways to use our Huffman Encoding Visualizer.
+              First, is to simply type your input into the text box, and watch
+              the tree, bits, and compression percentage dynamically change with
+              each character. Or, if you want, you can drag and drop a text file
+              into the text box, and the Visualizer will automatically populate
+              the text field, as well as build the tree, display the bits, and
+              show the compression percentage for the file you dropped. After
+              doing either of these, if you want to keep the encoding that you
+              just created, you can click on the "Download" button, and your
+              browser will initiate a download of the encoded file. However,
+              your typical text editor will not be able to correctly interpret
+              this file, because of its encoding. If you wish to see the decoded
+              contents of your encoded file, you may drag and drop the file into
+              the bits display box, or use the "Upload" button, and like magic,
+              everything will be populated!
+            </p>
+
+            <h3>How it works</h3>
+            <p>
+              Using the input from the user, we build a Huffman Tree. This is a
+              binary tree where each leaf represents a unique character from the
+              input. For more information on constructing a Huffman Tree,
+              <a href="huffman_tutorial.html" target="_blank"
+                >read this article</a
+              >. Once this is done, we use the structure of the tree to map each
+              unique character to a specific encoding. These encodings are then
+              used in conjunction with the user input to create the series of
+              bits that represents the input. Metadata is constructed using the
+              character mappings, and then added to an array in preparation for
+              writing to a file. The series of bits is divided into one byte
+              chunks, and appended to the array, completing the download file.
+              When an encoded file is uploaded, the process is essentially
+              reversed. The mapping metadata is used to reconstruct the user
+              input from the bit series, and then that input is used once again
+              to reconstruct the tree. The compression percentage is calculated
+              by subtracting the size of the encoded file divided by what would
+              have been the size of the plain text file from one, and displayed
+              in a nifty bar below the output.
+            </p>
+
+            <h3>About this project</h3>
+            <p>
+              Originally assigned as a group project for the Baylor University
+              undergraduate algorithms course, we decided to take it one step
+              further. We wanted to create something that not only met the
+              project requirements, but also exceeded expectations, resulting in
+              a project that is open source, useful, and innovative, plus looks
+              mighty fine. Created using only JavaScript, HTML, and CSS, the
+              project can be run locally with the source code, or on any web
+              server, because it has no server-side dependencies.
+            </p>
+
+            <h3>Also see</h3>
+            <p>
+              Read the
+              <a
+                href="https://www.huffmancoding.com/my-uncle/scientific-american"
+                target="_"
+                >Scientific American article</a
+              >
+              by his nephew David Huffman.
+            </p>
+
+            <h3>About the authors</h3>
+            <div class="row" style="padding-bottom:50px;">
+              <div class="col-xs-6">
+                <h4>Wes Cossick</h4>
+                <img src="img/wes.jpg" align="left" class="thumbnail" />
+                Developer, entrepreneur, and web-technology extraordinaire, Wes
+                has nearly a decade of software development experience. Wes is
+                well versed in JS, HTML, and CSS, along with a host of other
+                coding languages, and loves to tackle challenges that utilize
+                these skills. When not in front of a computer screen, Wes loves
+                playing sand volleyball and eating delicious food.
+              </div>
+
+              <div class="col-xs-6">
+                <h4>Evan Green</h4>
+                <img src="img/evan.jpg" align="left" class="thumbnail" />
+                Most people who meet Evan come away with one impression. This
+                guy's super cool, and I want to be just like him. Or something
+                like that. Either way, Evan enjoys spending his time learning as
+                much as he can about computers and programming, as well as going
+                on adventures, and making cheesy jokes at every opportunity. He
+                also wishes to one day have a green belt in karate.
+              </div>
             </div>
-						
-						<h3>About the authors</h3>
-						<div class="row" style="padding-bottom:50px;">
-							<div class="col-xs-6">
-								<h4>Wes Cossick</h4>
-								<img src="img/wes.jpg" align="left" class="thumbnail">
-								Developer, entrepreneur, and web-technology extraordinaire, Wes has nearly a decade of software development experience. Wes is well versed in JS, HTML, and CSS, along with a host of other coding languages, and loves to tackle challenges that utilize these skills. When not in front of a computer screen, Wes loves playing sand volleyball and eating delicious food.
-							</div>
-							
-							<div class="col-xs-6">
-								<h4>Evan Green</h4>
-								<img src="img/evan.jpg" align="left" class="thumbnail">
-								Most people who meet Evan come away with one impression. This guy's super cool, and I want to be just like him. Or something like that. Either way, Evan enjoys spending his time learning as much as he can about computers and programming, as well as going on adventures, and making cheesy jokes at every opportunity. He also wishes to one day have a green belt in karate.
-							</div>
-						</div>
-					</div>
-				</div>
-			</p>
-		</div>
-	</div><!-- /.container -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.container -->
 
-	<!-- libraries -->
-	<script src="js/libraries/jquery-2.1.3.min.js"></script>
-	<script src="js/libraries/bootstrap.min.js"></script>
-</body>
+    <!-- libraries -->
+    <script src="js/libraries/jquery-2.1.3.min.js"></script>
+    <script src="js/libraries/bootstrap.min.js"></script>
+  </body>
 </html>
