@@ -1,0 +1,135 @@
+<!-- END WAYBACK TOOLBAR INSERT -->
+<h1>A quick tutorial on generating a huffman tree</h1>
+
+Lets say you have a set of numbers and their frequency of use and want 
+to create a huffman encoding for them:
+<pre>
+	<b>FREQUENCY</b>	<b>VALUE</b>
+        ---------       -----
+       	     5            1
+             7            2
+            10            3
+            15            4
+            20            5
+            45            6
+</pre>
+Creating a huffman tree is simple.  Sort this list by frequency and
+make the two-lowest elements into leaves, creating a parent node
+with a frequency that is the sum of the two lower element's frequencies:
+<pre>
+    	12:*
+    	/  \
+      5:1   7:2
+</pre>
+The two elements are removed from the list and the new parent node,
+with frequency 12, is inserted into the list by frequency.  So now the 
+list, sorted by frequency, is:
+<pre>
+        10:3
+        12:*
+        15:4
+        20:5
+        45:6
+</pre>
+You then repeat the loop, combining the two lowest elements. This results in:
+<pre>
+    	22:*
+    	/   \
+     10:3   12:*
+     	    /   \
+	  5:1   7:2
+</pre>
+and the list is now:
+<pre>
+	15:4
+	20:5
+	22:*
+	45:6
+</pre>
+You repeat until there is only one element left in the list.  
+<pre>
+    	35:*
+    	/   \
+      15:4  20:5
+
+      	22:*
+      	35:*
+      	45:6
+
+      	    57:*
+      	___/    \___
+       /            \
+     22:*          35:*
+    /   \          /   \
+ 10:3   12:*     15:4   20:5
+        /   \
+      5:1   7:2
+
+	45:6
+	57:*
+
+                                   102:*
+                __________________/    \__
+               /                          \
+      	    57:*                         45:6
+      	___/    \___
+       /            \
+     22:*          35:*
+    /   \          /   \
+ 10:3   12:*     15:4   20:5
+        /   \
+      5:1   7:2
+</pre>
+Now the list is just one element containing 102:*, you are done.
+<p>
+This element becomes the root of your binary huffman tree.  To generate
+a huffman code you traverse the tree to the value you want, outputing
+a <b>0</b> every time you take a lefthand branch, and a <b>1</b> every time you
+take a righthand branch.  (normally you traverse the tree backwards
+from the code you want and build the binary huffman encoding string
+backwards as well, since the <i>first</i> bit must start from the top).
+<p>
+<b>Example</b>:  The encoding for the value <b>4</b> (15:4) is <b>010</b>.  
+The encoding for the value <b>6</b> (45:6) is <b>1</b>
+<p>
+Decoding a huffman encoding is just as easy : as you read bits in
+from your input stream you traverse the tree beginning at the root,
+taking the left hand path if you read a <b>0</b> and the right hand path
+if you read a <b>1</b>.  When you hit a leaf, you have found the code.
+<p>
+Generally, any huffman compression scheme also requires the huffman
+tree to be written out as part of the file, otherwise the reader cannot
+decode the data.  For a static tree, you don't have to do this since
+the tree is known and fixed.
+<p>
+The easiest way to output the huffman tree itself is to, starting at
+the root, dump first the left hand side then the right hand side.
+For each node you output a <b>0</b>, for each leaf you output a <b>1</b> 
+followed by N bits representing the value.  For example, the partial tree in
+my last example above using 4 bits per value can be represented as
+follows:
+
+<pre>
+  <b>000100</b> fixed 6 bit byte indicates how many bits the <i>value</i>
+         for each leaf is stored in.  In this case, 4.
+  <b>0</b>      root is a node
+         left hand side is
+  <b>10011</b>  a leaf with value 3
+         right hand side is
+  <b>0</b>      another node
+         recurse down, left hand side is
+  <b>10001</b>  a leaf with value 1
+         right hand side is
+  <b>10010</b>  a leaf with value 2
+         recursion return
+</pre>
+So the partial tree can be represented with <b>00010001001101000110010</b>, 
+or 23 bits.  Not bad!
+<!--
+     FILE ARCHIVED ON 21:23:00 Mar 06, 2016 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 07:02:00 Feb 04, 2020.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
