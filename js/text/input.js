@@ -5,7 +5,8 @@ function interpret_text(text) {
     bit_string: "",
     encoded_tree: {},
     file_output: [],
-    compression_percentage: 0.0
+    compression_percentage: 0.0, 
+    compression_ratio: 0.0
   };
 
   // Build data
@@ -31,9 +32,15 @@ function interpret_text(text) {
   result.file_output = build_file_output(paths, byte_array, pad.count);
 
   // Calculate percentage
-
   result.compression_percentage =
     (1 - result.file_output.length / text.length) * 100;
+  
+  // Calculate ratio   
+  result.compression_ratio = 
+    (1 - byte_array.length / text.length) * 100;
+
+  //console.log("text", text.length, "byte", byte_array.length, "file", result.file_output.length, 
+  //            result.compression_percentage, result.compression_ratio);
 
   // Return
   return result;

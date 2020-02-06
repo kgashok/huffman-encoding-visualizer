@@ -146,7 +146,7 @@ function update_gui_elements(result){
 	update_huffman_graph(result.encoded_tree);
 	update_huffman_bits(result.bit_string);
 	update_huffman_download(result.file_output);
-	update_huffman_compression(result.compression_percentage);
+	update_huffman_compression(result.compression_percentage, result.compression_ratio);
 }
 
 
@@ -194,8 +194,8 @@ function update_huffman_download(file_output){
 }
 
 
-// Update compression percentage meter
-function update_huffman_compression(percentage){
+// Update compression percentage meters
+function update_huffman_compression(percentage, ratio){
 	// Handle undefined
 	if(percentage === undefined){
 		$("#huffman_compression_bar").css("width", "0%");
@@ -209,21 +209,23 @@ function update_huffman_compression(percentage){
 	
 	// Format bar
 	$("#huffman_compression_bar").css("width", Math.abs(percentage)+"%");
-	$("#huffman_compression_bar_2").css("width", Math.abs(percentage)+"%");
+	$("#huffman_compression_bar_2").css("width", Math.abs(ratio)+"%");
 	
 	if(percentage < 0){
 		$("#huffman_compression_bar").addClass("progress-bar-danger");
-		$("#huffman_compression_bar_2").addClass("progress-bar-danger");
-    
-    $("#huffman_compression_bar").css("width", Math.abs(percentage)+"%");
-	  $("#huffman_compression_bar_2").css("width", Math.abs(percentage)+"%");
+  }
+  else{
+		$("#huffman_compression_bar").removeClass("progress-bar-danger");
+	}
+
+  if(ratio < 0){
+		$("#huffman_compression_bar_2").addClass("progress-bar-danger");    
 	}
 	else{
-		$("#huffman_compression_bar").removeClass("progress-bar-danger");
     $("#huffman_compression_bar_2").removeClass("progress-bar-danger");
 
 	}
 	
 	$("#huffman_compression").attr("data-original-title", Math.round(percentage, 1)+"%");
-	$("#huffman_compression_2").attr("data-original-title", Math.round(percentage, 1)+"%");
+	$("#huffman_compression_2").attr("data-original-title", Math.round(ratio, 1)+"%");
 }
