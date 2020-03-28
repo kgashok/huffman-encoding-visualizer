@@ -1,0 +1,4 @@
+tasks:
+  - init: npm install http-server -g && http-server . -p 3000
+image:
+  file: .gitpod.Dockerfile
