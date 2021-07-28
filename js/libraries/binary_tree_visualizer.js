@@ -79,7 +79,7 @@ function visualize(binary_tree_json, offset_fullscreen){
 			width: 60,
 			dim: 40,
 			type: 'circle',
-			//color: '#81868f',
+			//color: '#81868f', // in case you want to go back to the gray
 			color: '#ffaa00',
 			overridable: true
 		},
@@ -117,7 +117,7 @@ function visualize(binary_tree_json, offset_fullscreen){
 			//add some color to the nodes in the path between the
 			//root node and the selected node.
 			if (node.selected) {
-				node.data.$color = "#ffaa00";
+				node.data.$color = "#ffaa00"; // #81868f back to gray
 			}
 			else {
 				delete node.data.$color;

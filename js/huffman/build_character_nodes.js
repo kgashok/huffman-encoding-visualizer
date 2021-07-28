@@ -15,7 +15,7 @@ function build_character_nodes(input) {
       }
     }
     let sname = input.charAt(i);
-    let sid = "0";
+    let sid = "0";  // might come in handy to hide whitespace nodes
     if (!found) {
       if (sname === " ") {
         sname = "spc"; sid = "1";
