@@ -7,19 +7,24 @@ function build_character_nodes(input) {
     for (var j = 0; j < input_data.length && !found; j++) {
       let sname = input.charAt(i);
       if (sname === " ") sname = "spc";
-      else if (sname === '\n') sname = "nl";
-      
+      else if (sname === "\n") sname = "nl";
+
       if (input_data[j].name == sname) {
         input_data[j].frequency++;
         found = true;
       }
     }
     let sname = input.charAt(i);
+    let sid = "0";
     if (!found) {
-      if (sname === " ") sname = "spc";
-      else if (sname === '\n') sname = "nl";
+      if (sname === " ") {
+        sname = "spc"; sid = "1";
+      }
+      else if (sname === "\n") {
+        sname = "nl", sid = "1";
+      }
       input_data[input_data.length] = {
-        id: "0",
+        id: sid,
         name: sname,
         children: [],
         frequency: 1

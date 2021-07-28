@@ -79,7 +79,8 @@ function visualize(binary_tree_json, offset_fullscreen){
 			width: 60,
 			dim: 40,
 			type: 'circle',
-			color: '#81868f',
+			//color: '#81868f',
+			color: '#ffaa00',
 			overridable: true
 		},
 		
@@ -116,7 +117,7 @@ function visualize(binary_tree_json, offset_fullscreen){
 			//add some color to the nodes in the path between the
 			//root node and the selected node.
 			if (node.selected) {
-				node.data.$color = "#81868f";
+				node.data.$color = "#ffaa00";
 			}
 			else {
 				delete node.data.$color;
@@ -129,6 +130,8 @@ function visualize(binary_tree_json, offset_fullscreen){
 					//how many children it has
 					node.data.$color = ['#434a54', '#baa', '#caa', '#daa', '#eaa', '#faa'][count];
 				}
+        if(node.name === "spc" || node.name === "nl")
+          node.data.$color = "#aaaaaa";
 			}
 		},
 		
