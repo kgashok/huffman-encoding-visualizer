@@ -6,7 +6,7 @@ function build_character_nodes(input) {
 
     for (var j = 0; j < input_data.length && !found; j++) {
       let sname = input.charAt(i);
-      if (sname === " ") sname = "' '";
+      if (sname === " ") sname = "spc";
       if (input_data[j].name == sname) {
         input_data[j].frequency++;
         found = true;
@@ -14,7 +14,7 @@ function build_character_nodes(input) {
     }
     let sname = input.charAt(i);
     if (!found) {
-      if (input.charAt(i) === " ") sname = "' '";
+      if (input.charAt(i) === " ") sname = "spc";
       input_data[input_data.length] = {
         id: "0",
         name: sname,
