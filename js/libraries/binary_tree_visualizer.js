@@ -130,8 +130,11 @@ function visualize(binary_tree_json, offset_fullscreen){
 					//how many children it has
 					node.data.$color = ['#434a54', '#baa', '#caa', '#daa', '#eaa', '#faa'][count];
 				}
-        if(node.name === "spc" || node.name === "nl")
+        if(node.id === 2) {
           node.data.$color = "#aaaaaa";
+          // console.log(node);
+        }
+        
 			}
 		},
 		
