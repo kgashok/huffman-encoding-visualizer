@@ -1,5 +1,5 @@
 [![Say 
-Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/lifebalance@gmail.com)
+Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/lifebalance)
 
 Also see [this](https://people.ok.ubc.ca/ylucet/DS/Huffman.html)
 ![img](https://i.imgur.com/5eRciER.jpg)
