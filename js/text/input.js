@@ -37,13 +37,15 @@ function interpret_text(text) {
   
   // Compression percentage: includes metadata overhead
   // Accounts for the complete encoded file (metadata + content)
+  // Convert file_output bytes to bits (Uint8Array.length is in bytes)
   result.compression_percentage =
     (1 - result.file_output.length / text.length) * 100;
   
   // Compression ratio: content only (excludes metadata)
   // Shows the efficiency of Huffman encoding on content alone
+  // Convert byte_array bytes to bits for proper comparison
   result.compression_ratio = 
-    (1 - byte_array.length / original_size_bits) * 100;
+    (1 - (byte_array.length * 8) / original_size_bits) * 100;
 
   //console.log("text", text.length, "byte", byte_array.length, "file", result.file_output.length, 
   //            result.compression_percentage, result.compression_ratio);
