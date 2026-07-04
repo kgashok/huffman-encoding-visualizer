@@ -81,6 +81,15 @@
         </div>
 
         <!-- show compression bar on top as well -->
+        <div class="compression-label">
+          <i class="fa fa-compress"></i>&nbsp; Raw Encoding Savings
+          <i
+            class="fa fa-question-circle compression-info"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="How much smaller the raw encoded bits are compared to the original text, before adding the metadata needed to decode it."
+          ></i>
+        </div>
         <div
           class="progress"
           id="huffman_compression_2"
@@ -146,7 +155,15 @@
 
         <div class="row" style="padding-bottom:50px;">
           <div class="col-xs-12">
-            <h3 style="padding:20px 0 5px 0;">Compression Percentage</h3>
+            <h3 style="padding:20px 0 5px 0;">
+              <i class="fa fa-file-archive-o"></i>&nbsp; Total File Savings
+              <i
+                class="fa fa-question-circle compression-info"
+                data-toggle="tooltip"
+                data-placement="top"
+                title="How much smaller the final downloadable file is compared to the original text, including the metadata needed to decode it."
+              ></i>
+            </h3>
 
             <div
               class="progress"
