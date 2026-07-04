@@ -110,3 +110,27 @@ body {
         color:#5e6675;
 }
 
+.navbar-kite-logo{
+        display:inline-block;
+        padding:0;
+        margin:8px 0 0 15px;
+        vertical-align:middle;
+}
+
+.navbar-kite-logo img{
+        height:34px;
+        width:auto;
+        border-radius:3px;
+        transition:opacity .2s;
+}
+
+.navbar-kite-logo:hover img{
+        opacity:0.8;
+}
+
+@media (max-width: 767px){
+        .navbar-kite-logo{
+                margin:8px 0 8px 15px;
+        }
+}
+
