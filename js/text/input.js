@@ -31,13 +31,19 @@ function interpret_text(text) {
   // Build file output
   result.file_output = build_file_output(paths, byte_array, pad.count);
 
-  // Calculate percentage
-  result.compression_percentage =
-    (1 - result.file_output.length / text.length) * 100;
+  // Calculate compression metrics
+  // Note: In UTF-8/ASCII, each character is typically 8 bits
+  var original_size_bits = text.length * 8;
   
-  // Calculate ratio   
+  // Compression percentage: includes metadata overhead
+  // Accounts for the complete encoded file (metadata + content)
+  result.compression_percentage =
+    (1 - result.file_output.length / (text.length)) * 100;
+  
+  // Compression ratio: content only (excludes metadata)
+  // Shows the efficiency of Huffman encoding on content alone
   result.compression_ratio = 
-    (1 - byte_array.length / text.length) * 100;
+    (1 - byte_array.length / original_size_bits) * 100;
 
   //console.log("text", text.length, "byte", byte_array.length, "file", result.file_output.length, 
   //            result.compression_percentage, result.compression_ratio);
