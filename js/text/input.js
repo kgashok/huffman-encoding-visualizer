@@ -38,7 +38,7 @@ function interpret_text(text) {
   // Compression percentage: includes metadata overhead
   // Accounts for the complete encoded file (metadata + content)
   result.compression_percentage =
-    (1 - result.file_output.length / (text.length)) * 100;
+    (1 - result.file_output.length / text.length) * 100;
   
   // Compression ratio: content only (excludes metadata)
   // Shows the efficiency of Huffman encoding on content alone
